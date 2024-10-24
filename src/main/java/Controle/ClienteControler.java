@@ -1,8 +1,10 @@
 package Controle;
 
 import entidades.Cliente;
+import facade.ClienteFacade;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -11,17 +13,19 @@ import javax.faces.bean.SessionScoped;
 public class ClienteControler {
     
     private Cliente cliente = new Cliente();
-    private List<Cliente> listaClientes = new ArrayList<>();
+    
+    @EJB
+    private ClienteFacade clienteFacade;
 
     public void salvar() {
        
-        listaClientes.add(cliente);
+        clienteFacade.salvar(cliente);
         
         cliente = new Cliente(); 
     }
     
     public void remover(Cliente cliente) {
-        listaClientes.remove(cliente);
+        clienteFacade.remover(cliente);
     }
 
     public Cliente getCliente() {
@@ -33,10 +37,7 @@ public class ClienteControler {
     }
 
     public List<Cliente> getListaClientes() {
-        return listaClientes;
+        return clienteFacade.listaTodos();
     }
-
-    public void setListaClientes(List<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
-    }
+    
 }

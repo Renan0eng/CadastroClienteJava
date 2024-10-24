@@ -4,16 +4,30 @@
  */
 package entidades;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author renan90483657
  */
-
+@Entity
 public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(length = 200, nullable = false, unique = false)
     private String nome;
+    @Column(length = 200, nullable = true, unique = true)
     private String cpf;
+    @Column(length = 200, nullable = true, unique = true)
     private String rg;
+    @Column(length = 200)
     private String telefone;
+    @Column
     private String endereco;
 
     public String getNome() {

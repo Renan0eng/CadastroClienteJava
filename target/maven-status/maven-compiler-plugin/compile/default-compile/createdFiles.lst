@@ -1,2 +1,4 @@
 entidades\Cliente.class
 Controle\ClienteControler.class
+facade\AbstractFacade.class
+facade\ClienteFacade.class

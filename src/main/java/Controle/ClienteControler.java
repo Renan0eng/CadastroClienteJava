@@ -2,7 +2,6 @@ package Controle;
 
 import entidades.Cliente;
 import facade.ClienteFacade;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -17,15 +16,18 @@ public class ClienteControler {
     @EJB
     private ClienteFacade clienteFacade;
 
-    public void salvar() {
-       
-        clienteFacade.salvar(cliente);
-        
+    public void salvar() {      
+        clienteFacade.salvar(cliente);        
         cliente = new Cliente(); 
     }
     
     public void remover(Cliente cliente) {
         clienteFacade.remover(cliente);
+    }
+    
+    public String editar(Cliente cliente) {
+        this.cliente = cliente;
+        return "index";
     }
 
     public Cliente getCliente() {

@@ -2,58 +2,51 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Cadastro de Cliente</title>
+        <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <div style="text-align: center;">
-            <h2>Cadastro de Cliente</h2>
-        </div>
-        <br/>
-        <h:form>
-            <p:messages/>
-            <p:growl />
-            <p:panelGrid columns="2">
-                Nome(*):<p:inputText value="#{clienteControler.cliente.nome}" size="20" required="true" requiredMessage="Campo nome é Obrigatório!"/>
-                CPF(*):<p:inputText value="#{clienteControler.cliente.cpf}" size="20" required="true" requiredMessage="Campo CPF é Obrigatório!"/>
-                RG:<p:inputText value="#{clienteControler.cliente.rg}" size="20"/>
-                Telefone:<p:inputText value="#{clienteControler.cliente.telefone}" size="20"/>
-                Endereço:<p:inputText value="#{clienteControler.cliente.endereco}" size="20"/>
-            </p:panelGrid>
-            <br/>
-            <p:commandButton value="Salvar"
-                             ajax="false"
-                             action="#{clienteControler.salvar()}"/>
-            <br/>
-            <br/>
-            <p:dataTable value="#{clienteControler.listaClientes}" var="cliente" emptyMessage="Nenhum cliente cadastrado!">
-               <p:column headerText="Nome">
-                    #{cliente.nome}
-                </p:column>
-                <p:column headerText="CPF">
-                    #{cliente.cpf}
-                </p:column>
-                <p:column headerText="RG">
-                    #{cliente.rg}
-                </p:column>
-                <p:column headerText="Telefone">
-                    #{cliente.telefone}
-                </p:column>
-                <p:column headerText="Endereço">
-                    #{cliente.endereco}
-                </p:column>
-                <p:column headerText="Operações" width="100" style="text-align: center">
-                    <p:commandButton icon="ui-icon-trash"
-                                     immediate="true"
-                                     ajax="false"
-                                     action="#{clienteControler.remover(cliente)}"/>
-                    <p:commandButton icon="ui-icon-pencil"
-                                     ajax="false"
-                                     immediate="true"
-                                     action="#{clienteControler.editar(cliente)}"/>
-                </p:column>
-            </p:dataTable>                
-        </h:form>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="100">
+                <table>
+                    <tr>
+                        <td width="35"></td>
+                        <td width="450"><img src="https://www.rodolfonakamura.com.br/wp-content/uploads/2016/10/lg-unipar.jpg" width="80"/></td>
+                        <td><p:outputLabel value="Cadastro Cliente 2024" style="font-size: xx-large"/></td>
+                    </tr>
+                </table>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="40">
+                <div align="center">
+                    <p:outputLabel value="Todos os direitos reservados. @2024"/>
+                </div>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="160">
+                <h:form id="formulario">
+                    <p:panelMenu style="width: 150px" >
+                        <p:submenu label="Cadastros" rendered="true" >
+                            <p:menuitem value="Cliente" ajax="false" action="/cliente/listacliente.xhtml"/>                             
+                            <p:menuitem value="Cidade" ajax="false" action="/cidade/listacidade.xhtml"/>                          
+                            <p:menuitem value="Estado" ajax="false" action="/estado/listaestado.xhtml"/> 
+                        </p:submenu>                                                      
+                        <p:submenu label="Movimentos" rendered="true" >
+                            <p:menuitem value="Matricula" ajax="false" action="/matricula/matriculalista.xhtml"/>
+                            <p:menuitem value="Notas" ajax="false" action="#"/>
+                        </p:submenu>
+                        <p:submenu label="Relatórios" rendered="true" >
+                            <p:menuitem value="Cidades" ajax="false" action="#"/>
+                            <p:menuitem value="Vendas" ajax="false" action="#"/>
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <ui:insert id="corpo" name="body">
+                    Seja bem vindo!
+                </ui:insert>
+            </p:layoutUnit>
+        </p:layout>
     </h:body>
 </html>

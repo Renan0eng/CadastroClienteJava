@@ -42,4 +42,8 @@ public class ClienteControler {
         return clienteFacade.listaTodos();
     }
     
+    public void novo(){
+         this.cliente = new Cliente();
+    }
+    
 }

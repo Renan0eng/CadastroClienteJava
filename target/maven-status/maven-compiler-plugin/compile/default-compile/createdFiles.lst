@@ -1,4 +1,10 @@
+Controle\EstadoControler.class
+entidades\Estado.class
+Controle\CidadeControler.class
+facade\ClienteFacade.class
 entidades\Cliente.class
 Controle\ClienteControler.class
+entidades\Cidade.class
 facade\AbstractFacade.class
-facade\ClienteFacade.class
+facade\CidadeFacade.class
+facade\EstadoFacade.class
